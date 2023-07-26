@@ -6,6 +6,10 @@
     <title>Product</title>
 </head>
 <body>
-    Product Number : {{.id}}
+    {{range  .}}
+    <div>
+    Product Number : {{.ID}}  TES
+    </div>
+    {{end}}
 </body>
 </html>

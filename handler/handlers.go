@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"go-web/entity"
 	"net/http"
 	"path"
 	"strconv"
@@ -45,10 +46,28 @@ func Product(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	data := map[string]interface{}{
-		"id": idNumb,
+	data := []entity.Product{
+		{
+			ID:    idNumb,
+			Name:  "Product 1",
+			Price: 1000,
+			Stock: 10,
+		},
+		{
+			ID:    idNumb + 1,
+			Name:  "Product 2",
+			Price: 2000,
+			Stock: 20,
+		},
+		{
+			ID:    idNumb + 2,
+			Name:  "Product 3",
+			Price: 3000,
+			Stock: 30,
+		},
 	}
 	tmpl, err := template.ParseFiles(path.Join("views", "product.html"))
+
 	if err != nil {
 		http.NotFound(w, r)
 		return
